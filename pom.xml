@@ -40,8 +40,8 @@
 
     <distributionManagement>
         <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <id>internal</id>
+            <url>file://${project.build.directory}/mvn-repo</url>
         </snapshotRepository>
     </distributionManagement>
 
