@@ -117,7 +117,7 @@ object Block extends BtcSerializer[Block] {
     val script = OP_PUSHDATA(writeUInt32(486604799L)) :: OP_PUSHDATA(BinaryData("04")) :: OP_PUSHDATA("Block #310379:0000000000000000241252a7bb27be97befe9218c1290dff36c1ff129ec7211a".getBytes("UTF-8")) :: Nil
     val scriptPubKey = OP_PUSHDATA("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") :: OP_CHECKSIG :: Nil
     Block(
-      BlockHeader(version = 1, hashPreviousBlock = Hash.Zeroes, hashMerkleRoot = "000000000000000000522753002939c78659b4fdc6ed56c6b6aacdc7586facf2", time = 1405164774, bits = 0x1e01ffff, nonce = 4016033),
+      BlockHeader(version = 1, hashPreviousBlock = Hash.Zeroes, hashMerkleRoot = "00522753002939c78659b4fdc6ed56c6b6aacdc7586facf2f6ada2012ed31703", time = 1405164774, bits = 0x1e01ffff, nonce = 4016033),
       List(
         Transaction(version = 1,
           txIn = List(TxIn.coinbase(script)),
