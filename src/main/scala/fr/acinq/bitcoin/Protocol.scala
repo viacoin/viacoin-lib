@@ -258,9 +258,9 @@ trait BtcSerializable[T] {
 }
 
 object Message extends BtcSerializer[Message] {
-  val MagicMain = 0xD9B4BEF9L
-  val MagicTestNet = 0xDAB5BFFAL
-  val MagicTestnet3 = 0x0709110BL
+  val MagicMain = 0xCBC6680F
+  val MagicTestNet = 0x92EFC5A9
+  val MagicTestnet3 = 0x92EFC5A9
   val MagicNamecoin = 0xFEB4BEF9L
   val MagicSegnet = 0xC4A1ABDC
 
