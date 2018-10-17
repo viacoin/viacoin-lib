@@ -121,7 +121,7 @@ object Block extends BtcSerializer[Block] {
       List(
         Transaction(version = 1,
           txIn = List(TxIn.coinbase(script)),
-          txOut = List(TxOut(amount = 50 btc, publicKeyScript = scriptPubKey)),
+          txOut = List(TxOut(amount = 0 btc, publicKeyScript = scriptPubKey)),
           lockTime = 0))
     )
   }
