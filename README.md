@@ -1,8 +1,8 @@
 # Simple Scala Viacoin Library
 
-Simple bitcoin library written in Scala.
+Simple viacoin library written in Scala.
 
-[![Build Status](https://travis-ci.org/viacoin/viacoin-lib.png)](https://travis-ci.org/viacoin/viacoin-lib)
+[![Build Status](https://travis-ci.com/viacoin/viacoin-lib.svg?branch=master)](https://travis-ci.com/viacoin/viacoin-lib)
 
 ## Overview
 
