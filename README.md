@@ -1,12 +1,12 @@
-# Simple Scala Bitcoin Library
+# Simple Scala Viacoin Library
 
-Simple bitcoin library written in Scala.
+Simple viacoin library written in Scala.
 
 [![Build Status](https://travis-ci.org/ACINQ/bitcoin-lib.png)](https://travis-ci.org/ACINQ/bitcoin-lib)
 
 ## Overview
 
-This is a simple scala library which implements most of the bitcoin protocol:
+This is a simple scala library which implements most of the viacoin protocol:
 
 * base58 encoding/decoding
 * block headers, block and tx parsing
@@ -21,7 +21,7 @@ This is a simple scala library which implements most of the bitcoin protocol:
 
 ## Objectives
 
-Our goal is not to re-implement a full Bitcoin node but to build a library that can be used to build applications that rely on bitcoind to interface with the Bitcoin network (to retrieve and index transactions and blocks, for example...). We use it very often to build quick prototypes and test new ideas. Besides, some parts of the protocole are fairly simple and "safe" to re-implement (BIP32/BIP39 for example), especially for indexing/analysis purposes. And, of course, we use it for our own work on Lightning (see https://github.com/ACINQ/eclair).
+Our goal is not to re-implement a full Viacoin node but to build a library that can be used to build applications that rely on viacoind to interface with the Viacoin network (to retrieve and index transactions and blocks, for example...). We use it very often to build quick prototypes and test new ideas. Besides, some parts of the protocole are fairly simple and "safe" to re-implement (BIP32/BIP39 for example), especially for indexing/analysis purposes. And, of course, we use it for our own work on Lightning (see https://github.com/ACINQ/eclair).
 
 ## Status
 - [X] Message parsing (blocks, transactions, inv, ...)
@@ -47,7 +47,7 @@ Our goal is not to re-implement a full Bitcoin node but to build a library that 
 <dependencies>
   <dependency>
     <groupId>fr.acinq</groupId>
-    <artifactId>bitcoin-lib_2.11</artifactId>
+    <artifactId>viacoin-lib_2.11</artifactId>
     <version>0.11</version>
   </dependency>
 </dependencies>
@@ -57,11 +57,11 @@ The latest snapshot (development) version is 0.12-SNAPSHOT, the latest released 
 
 ## Segwit support
 
-Bitcoin-lib, starting with version 0.9.7, fully supports segwit (see below for more information) and is on par with the segwit code in Bitcoin Core 0.13.1.
+Viacoin-lib, starting with version 0.9.7, fully supports segwit (see below for more information) and is on par with the segwit code in Viacoin Core 0.13.1.
 
 ## libscp256k1 support
 
-bitcoin-lib embeds JNI bindings for libsecp256k1, which is must faster than BouncyCastle. It will extract and load native bindings for your operating system
+viacoin-lib embeds JNI bindings for libsecp256k1, which is must faster than BouncyCastle. It will extract and load native bindings for your operating system
 in a temporary directory. If this process fails it will fallback to BouncyCastle.
 
 JNI libraries are included for:
@@ -70,7 +70,7 @@ JNI libraries are included for:
 - Osx 64 bits
 
 You can use your own library native library by specifying its path with `-Dfr.acinq.secp256k1.lib.path` and optionally its name with `-Dfr.acinq.secp256k1.lib.name` (if unspecified
-bitcoin-lib will use the standard name for your OS i.e. libsecp256k1.so on Linux, secp256k1.dll on Windows, ...)
+viacoin-lib will use the standard name for your OS i.e. libsecp256k1.so on Linux, secp256k1.dll on Windows, ...)
 
 You can also specify the temporary directory where the library will be extracted with `-Djava.io.tmpdir` or `-Dfr.acinq.secp256k1.tmpdir` (if you want to use a different
 directory from `-Djava.io.tmpdir`).
@@ -130,7 +130,7 @@ The Transaction class can be used to create, serialize, deserialize, sign and va
 
 #### P2PKH transactions
 
-A P2PKH transactions sends bitcoins to a public key hash, using a standard P2PKH script:
+A P2PKH transactions sends viacoins to a public key hash, using a standard P2PKH script:
 ``` scala
 val pkh = pubKey.hash160
 val pubKeyScript = OP_DUP :: OP_HASH160 :: OP_PUSHDATA(pkh) :: OP_EQUALVERIFY :: OP_CHECKSIG :: Nil
@@ -180,7 +180,7 @@ This sample demonstrates how to serialize, create and verify simple P2PKH transa
 
 #### P2SH transactions
 
-A P2SH transactions sends bitcoins to a script hash:
+A P2SH transactions sends viacoins to a script hash:
 ```scala
 val redeemScript = Script.createMultiSigMofN(2, Seq(pub1, pub2, pub3 ))
 val multisigAddress = Crypto.hash160(redeemScript)
@@ -403,23 +403,23 @@ This sample demonstrates how to serialize, create and verify a P2WPSH transactio
 
 ### Wallet features
 
-Bitcoin-lib provides and simple and complete implementation of BIP32 and BIP39.
+Viacoin-lib provides and simple and complete implementation of BIP32 and BIP39.
 
 #### HD Wallet (BIP32)
 
-Let's play with the scala console and the first test vector from https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki
+Let's play with the scala console and the first test vector from https://github.com/viacoin/bips/blob/master/bip-0032.mediawiki
 
 ```shell
 mvn scala:console
 [INFO] Scanning for projects...
 [INFO]
 [INFO] ------------------------------------------------------------------------
-[INFO] Building bitcoin-lib 0.9.4-SNAPSHOT
+[INFO] Building viacoin-lib 0.9.4-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO]
-[INFO] --- scala-maven-plugin:3.2.0:console (default-cli) @ bitcoin-lib_2.11 ---
+[INFO] --- scala-maven-plugin:3.2.0:console (default-cli) @ viacoin-lib_2.11 ---
 [WARNING]  Expected all dependencies to require Scala version: 2.11.4
-[WARNING]  fr.acinq:bitcoin-lib_2.11:0.9.4-SNAPSHOT requires scala version: 2.11.4
+[WARNING]  fr.acinq:viacoin-lib_2.11:0.9.4-SNAPSHOT requires scala version: 2.11.4
 [WARNING]  com.github.scopt:scopt_2.11:3.2.0 requires scala version: 2.11.0
 [WARNING] Multiple versions of scala libraries detected!
 [WARNING] scala-maven-plugin cannot fork scala console!!  Running in process
@@ -483,9 +483,9 @@ mvn scala:console
 [INFO] Building bitcoin-lib 0.9.4-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO]
-[INFO] --- scala-maven-plugin:3.2.0:console (default-cli) @ bitcoin-lib_2.11 ---
+[INFO] --- scala-maven-plugin:3.2.0:console (default-cli) @ viacoin-lib_2.11 ---
 [WARNING]  Expected all dependencies to require Scala version: 2.11.6
-[WARNING]  fr.acinq:bitcoin-lib_2.11:0.9.4-SNAPSHOT requires scala version: 2.11.6
+[WARNING]  fr.acinq:viacoin-lib_2.11:0.9.4-SNAPSHOT requires scala version: 2.11.6
 [WARNING]  org.json4s:json4s-jackson_2.11:3.2.11 requires scala version: 2.11.0
 [WARNING] Multiple versions of scala libraries detected!
 [WARNING] scala-maven-plugin cannot fork scala console!!  Running in process

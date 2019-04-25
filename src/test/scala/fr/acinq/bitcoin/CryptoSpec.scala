@@ -40,7 +40,7 @@ class CryptoSpec extends FlatSpec {
     assert(publicKey.toBin === hex"04D7E9DD0C618C65DC2E3972E2AA406CCD34E5E77895C96DC48AF0CB16A1D9B8CE0C0A3E2F4CD494FF54FBE4F5A95B410C0BF022EB2B6F23AE39F40DB79FAA6827")
 
     val address = Base58Check.encode(Prefix.PubkeyAddress, Crypto.hash160(publicKey.toBin))
-    assert(address === "19FgFQGZy47NcGTJ4hfNdGMwS8EATqoa1X")
+    assert(address === "ViFWA7S2Ns1ag3MSoVK14Ago7wX8y3PaM2")
   }
 
   it should "validate public key at instantiation" in {
